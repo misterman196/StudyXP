@@ -98,6 +98,45 @@
             font-size: 20px;
         }
 
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 18px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+
+        .tab.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         /* Main Layout */
         .main-content {
             display: grid;
@@ -302,6 +341,15 @@
             background-color: #dee2e6;
         }
 
+        .btn-success {
+            background-color: #2a9d8f;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #21867a;
+        }
+
         /* Sidebar */
         .sidebar {
             display: flex;
@@ -376,54 +424,178 @@
             opacity: 0.9;
         }
 
-        /* XP History */
-        .xp-history {
+        /* Quiz Maker Styles */
+        .quiz-maker {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 25px;
+            padding: 30px;
             box-shadow: var(--shadow);
         }
 
-        .xp-history h3 {
-            margin-bottom: 20px;
+        .quiz-maker h2 {
             color: var(--secondary);
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .xp-history-item {
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .answer-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .answer-option {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
+            gap: 15px;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
-        .xp-history-item:last-child {
-            border-bottom: none;
+        .answer-option:hover {
+            border-color: var(--primary);
         }
 
-        .xp-history-subject {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .xp-history-icon {
+        .answer-letter {
             width: 40px;
             height: 40px;
-            border-radius: 10px;
+            border-radius: 50%;
+            background-color: #e9ecef;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 18px;
+            font-weight: bold;
+            color: var(--dark);
+            flex-shrink: 0;
         }
 
-        .xp-history-xp {
-            font-weight: bold;
-            color: var(--primary);
+        .answer-input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            background: transparent;
+        }
+
+        .answer-input:focus {
+            outline: none;
+        }
+
+        .correct-toggle {
+            padding: 8px 16px;
+            background-color: #e9ecef;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .correct-toggle.correct {
+            background-color: #2a9d8f;
+            color: white;
+        }
+
+        .quiz-maker-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .created-quizzes {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+        }
+
+        .created-quizzes h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .quiz-item {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .quiz-item h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .quiz-item p {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6c757d;
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #dee2e6;
         }
 
         /* Footer */
@@ -462,6 +634,15 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            .quiz-maker-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .quiz-maker-actions .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -476,7 +657,7 @@
             <div class="user-info">
                 <div class="xp-display">
                     <i class="fas fa-star"></i>
-                    <span id="current-xp">2,850</span> XP
+                    <span id="current-xp">0</span> XP
                 </div>
                 <div class="avatar">
                     JS
@@ -484,184 +665,211 @@
             </div>
         </header>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Left Column -->
-            <div class="left-column">
-                <!-- Dashboard Cards -->
-                <div class="dashboard-cards">
-                    <div class="card">
-                        <h3><i class="fas fa-book"></i> Current Subject</h3>
-                        <p>Mathematics - Algebra</p>
-                        <div class="progress-container">
-                            <div class="progress-label">
-                                <span>Progress</span>
-                                <span>65%</span>
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <div class="tab active" data-tab="study">Study Mode</div>
+            <div class="tab" data-tab="quiz-maker">Quiz Maker</div>
+        </div>
+
+        <!-- Study Mode Tab -->
+        <div class="tab-content active" id="study-tab">
+            <div class="main-content">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Dashboard Cards -->
+                    <div class="dashboard-cards">
+                        <div class="card">
+                            <h3><i class="fas fa-book"></i> Current Subject</h3>
+                            <p>Select a subject to begin studying</p>
+                            <div class="progress-container">
+                                <div class="progress-label">
+                                    <span>Progress</span>
+                                    <span>0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
                             </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        
+                        <div class="card">
+                            <h3><i class="fas fa-trophy"></i> Current Streak</h3>
+                            <p>Start your first study session!</p>
+                            <div class="progress-container">
+                                <div class="progress-label">
+                                    <span>Next milestone: 7 days</span>
+                                    <span>0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="card">
-                        <h3><i class="fas fa-trophy"></i> Current Streak</h3>
-                        <p>14 days in a row!</p>
-                        <div class="progress-container">
-                            <div class="progress-label">
-                                <span>Next milestone: 21 days</span>
-                                <span>66%</span>
+
+                    <!-- Question Card -->
+                    <div class="question-card">
+                        <div class="question-header">
+                            <h2 class="question-title">Question #1</h2>
+                            <div class="difficulty easy">Easy</div>
+                        </div>
+                        
+                        <p class="question-text">Welcome to StudyXP! Select an answer to begin your learning journey.</p>
+                        
+                        <div class="options">
+                            <div class="option" data-option="a">
+                                <div class="option-letter">A</div>
+                                <div class="option-text">Start Learning</div>
                             </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 66%"></div>
+                            <div class="option" data-option="b">
+                                <div class="option-letter">B</div>
+                                <div class="option-text">Earn XP</div>
+                            </div>
+                            <div class="option" data-option="c">
+                                <div class="option-letter">C</div>
+                                <div class="option-text">Level Up</div>
+                            </div>
+                            <div class="option" data-option="d">
+                                <div class="option-letter">D</div>
+                                <div class="option-text">All of the above</div>
                             </div>
                         </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary" id="hint-btn">
+                                <i class="fas fa-lightbulb"></i> Get Hint (Cost: 10 XP)
+                            </button>
+                            <button class="btn btn-primary" id="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Submit Answer
+                            </button>
+                            <button class="btn btn-secondary" id="next-btn" style="display: none;">
+                                <i class="fas fa-arrow-right"></i> Next Question
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- XP Notification (Hidden by default) -->
+                    <div class="card" id="xp-notification" style="display: none;">
+                        <h3><i class="fas fa-award"></i> XP Earned!</h3>
+                        <p>You earned <strong class="xp-earned">0</strong> XP!</p>
                     </div>
                 </div>
 
-                <!-- Question Card -->
-                <div class="question-card">
-                    <div class="question-header">
-                        <h2 class="question-title">Question #24</h2>
-                        <div class="difficulty medium">Medium</div>
-                    </div>
-                    
-                    <p class="question-text">If a quadratic equation is given by <strong>f(x) = 2x² - 8x + 6</strong>, what are the x-intercepts (roots) of the function?</p>
-                    
-                    <div class="options">
-                        <div class="option" data-option="a">
-                            <div class="option-letter">A</div>
-                            <div class="option-text">x = 1 and x = 3</div>
-                        </div>
-                        <div class="option" data-option="b">
-                            <div class="option-letter">B</div>
-                            <div class="option-text">x = 2 and x = 4</div>
-                        </div>
-                        <div class="option selected" data-option="c">
-                            <div class="option-letter">C</div>
-                            <div class="option-text">x = 1 and x = 4</div>
-                        </div>
-                        <div class="option" data-option="d">
-                            <div class="option-letter">D</div>
-                            <div class="option-text">x = -1 and x = 3</div>
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Stats Card -->
+                    <div class="stats-card">
+                        <h3><i class="fas fa-chart-line"></i> Study Stats</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" id="questions-answered">0</div>
+                                <div class="stat-label">Questions Answered</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="accuracy-rate">0%</div>
+                                <div class="stat-label">Accuracy</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="study-hours">0</div>
+                                <div class="stat-label">Study Hours</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="subjects-mastered">0</div>
+                                <div class="stat-label">Subjects Mastered</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="action-buttons">
-                        <button class="btn btn-secondary" id="hint-btn">
-                            <i class="fas fa-lightbulb"></i> Get Hint (Cost: 10 XP)
-                        </button>
-                        <button class="btn btn-primary" id="submit-btn">
-                            <i class="fas fa-paper-plane"></i> Submit Answer
-                        </button>
-                        <button class="btn btn-secondary" id="next-btn" style="display: none;">
-                            <i class="fas fa-arrow-right"></i> Next Question
-                        </button>
+                    <!-- Level Card -->
+                    <div class="level-card">
+                        <h3><i class="fas fa-medal"></i> Your Level</h3>
+                        <div class="level-display" id="current-level">1</div>
+                        <div class="level-label" id="level-label">Beginner</div>
+                        <div class="progress-container" style="margin-top: 20px;">
+                            <div class="progress-label">
+                                <span>Progress to Level 2</span>
+                                <span id="level-progress">0/100 XP</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="level-progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- XP Notification (Hidden by default) -->
-                <div class="card" id="xp-notification" style="display: none;">
-                    <h3><i class="fas fa-award"></i> XP Earned!</h3>
-                    <p>You earned <strong class="xp-earned">50</strong> XP for answering correctly!</p>
-                    <p>Bonus: +10 XP for answering quickly!</p>
+                    
+                    <!-- XP History -->
+                    <div class="stats-card" id="xp-history">
+                        <h3><i class="fas fa-history"></i> Recent XP</h3>
+                        <div class="empty-state" id="empty-xp-history">
+                            <i class="fas fa-clock"></i>
+                            <p>No XP earned yet. Start answering questions!</p>
+                        </div>
+                        <div id="xp-history-list" style="display: none;">
+                            <!-- XP history items will be added here dynamically -->
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Stats Card -->
-                <div class="stats-card">
-                    <h3><i class="fas fa-chart-line"></i> Study Stats</h3>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-value">142</div>
-                            <div class="stat-label">Questions Answered</div>
+        <!-- Quiz Maker Tab -->
+        <div class="tab-content" id="quiz-maker-tab">
+            <!-- Quiz Maker Form -->
+            <div class="quiz-maker">
+                <h2><i class="fas fa-plus-circle"></i> Create New Question</h2>
+                
+                <div class="form-group">
+                    <label for="question-text">Question Text</label>
+                    <textarea id="question-text" placeholder="Enter your question here..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Answer Options (Mark one as correct)</label>
+                    <div class="answer-options">
+                        <div class="answer-option" data-option="a">
+                            <div class="answer-letter">A</div>
+                            <input type="text" class="answer-input" id="answer-a" placeholder="Enter answer option A">
+                            <div class="correct-toggle" data-option="a">Mark as Correct</div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">87%</div>
-                            <div class="stat-label">Accuracy</div>
+                        
+                        <div class="answer-option" data-option="b">
+                            <div class="answer-letter">B</div>
+                            <input type="text" class="answer-input" id="answer-b" placeholder="Enter answer option B">
+                            <div class="correct-toggle" data-option="b">Mark as Correct</div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">24</div>
-                            <div class="stat-label">Study Hours</div>
+                        
+                        <div class="answer-option" data-option="c">
+                            <div class="answer-letter">C</div>
+                            <input type="text" class="answer-input" id="answer-c" placeholder="Enter answer option C">
+                            <div class="correct-toggle" data-option="c">Mark as Correct</div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">5</div>
-                            <div class="stat-label">Subjects Mastered</div>
+                        
+                        <div class="answer-option" data-option="d">
+                            <div class="answer-letter">D</div>
+                            <input type="text" class="answer-input" id="answer-d" placeholder="Enter answer option D">
+                            <div class="correct-toggle" data-option="d">Mark as Correct</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Level Card -->
-                <div class="level-card">
-                    <h3><i class="fas fa-medal"></i> Your Level</h3>
-                    <div class="level-display">12</div>
-                    <div class="level-label">Advanced Learner</div>
-                    <div class="progress-container" style="margin-top: 20px;">
-                        <div class="progress-label">
-                            <span>Progress to Level 13</span>
-                            <span>850/1,200 XP</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 70%"></div>
-                        </div>
-                    </div>
+                <div class="quiz-maker-actions">
+                    <button class="btn btn-secondary" id="clear-btn">
+                        <i class="fas fa-eraser"></i> Clear Form
+                    </button>
+                    <button class="btn btn-success" id="save-question-btn">
+                        <i class="fas fa-save"></i> Save Question
+                    </button>
                 </div>
-                
-                <!-- XP History -->
-                <div class="xp-history">
-                    <h3><i class="fas fa-history"></i> Recent XP</h3>
-                    <div class="xp-history-list">
-                        <div class="xp-history-item">
-                            <div class="xp-history-subject">
-                                <div class="xp-history-icon" style="background-color: #4361ee;">
-                                    <i class="fas fa-calculator"></i>
-                                </div>
-                                <div>
-                                    <div>Mathematics</div>
-                                    <div class="xp-history-time">10 minutes ago</div>
-                                </div>
-                            </div>
-                            <div class="xp-history-xp">+50 XP</div>
-                        </div>
-                        <div class="xp-history-item">
-                            <div class="xp-history-subject">
-                                <div class="xp-history-icon" style="background-color: #f72585;">
-                                    <i class="fas fa-atom"></i>
-                                </div>
-                                <div>
-                                    <div>Physics</div>
-                                    <div class="xp-history-time">1 hour ago</div>
-                                </div>
-                            </div>
-                            <div class="xp-history-xp">+40 XP</div>
-                        </div>
-                        <div class="xp-history-item">
-                            <div class="xp-history-subject">
-                                <div class="xp-history-icon" style="background-color: #4cc9f0;">
-                                    <i class="fas fa-dna"></i>
-                                </div>
-                                <div>
-                                    <div>Biology</div>
-                                    <div class="xp-history-time">3 hours ago</div>
-                                </div>
-                            </div>
-                            <div class="xp-history-xp">+30 XP</div>
-                        </div>
-                        <div class="xp-history-item">
-                            <div class="xp-history-subject">
-                                <div class="xp-history-icon" style="background-color: #f8961e;">
-                                    <i class="fas fa-globe-americas"></i>
-                                </div>
-                                <div>
-                                    <div>Geography</div>
-                                    <div class="xp-history-time">Yesterday</div>
-                                </div>
-                            </div>
-                            <div class="xp-history-xp">+60 XP</div>
-                        </div>
-                    </div>
+            </div>
+            
+            <!-- Created Quizzes List -->
+            <div class="created-quizzes">
+                <h3><i class="fas fa-list"></i> Your Created Questions</h3>
+                <div class="empty-state" id="empty-quiz-list">
+                    <i class="fas fa-question-circle"></i>
+                    <p>You haven't created any questions yet. Create your first question above!</p>
+                </div>
+                <div class="quiz-list" id="quiz-list">
+                    <!-- Created quizzes will appear here -->
                 </div>
             </div>
         </div>
@@ -673,153 +881,461 @@
     </div>
 
     <script>
-        // DOM Elements
+        // Global variables
+        let currentXP = 0;
+        let questionsAnswered = 0;
+        let correctAnswers = 0;
+        let studyHours = 0;
+        let userLevel = 1;
+        let levelThreshold = 100;
+        let createdQuizzes = [];
+        
+        // DOM Elements - Study Mode
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
         const options = document.querySelectorAll('.option');
         const submitBtn = document.getElementById('submit-btn');
         const nextBtn = document.getElementById('next-btn');
         const hintBtn = document.getElementById('hint-btn');
         const xpNotification = document.getElementById('xp-notification');
         const currentXpElement = document.getElementById('current-xp');
+        const questionsAnsweredElement = document.getElementById('questions-answered');
+        const accuracyRateElement = document.getElementById('accuracy-rate');
+        const studyHoursElement = document.getElementById('study-hours');
+        const subjectsMasteredElement = document.getElementById('subjects-mastered');
+        const currentLevelElement = document.getElementById('current-level');
+        const levelLabelElement = document.getElementById('level-label');
+        const levelProgressElement = document.getElementById('level-progress');
+        const levelProgressBar = document.getElementById('level-progress-bar');
+        const emptyXpHistory = document.getElementById('empty-xp-history');
+        const xpHistoryList = document.getElementById('xp-history-list');
         
-        // Current XP
-        let currentXP = 2850;
+        // DOM Elements - Quiz Maker
+        const questionText = document.getElementById('question-text');
+        const answerInputs = document.querySelectorAll('.answer-input');
+        const correctToggles = document.querySelectorAll('.correct-toggle');
+        const clearBtn = document.getElementById('clear-btn');
+        const saveQuestionBtn = document.getElementById('save-question-btn');
+        const emptyQuizList = document.getElementById('empty-quiz-list');
+        const quizList = document.getElementById('quiz-list');
         
-        // Add click event to options
-        options.forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selected class from all options
-                options.forEach(opt => {
-                    opt.classList.remove('selected');
+        // Tab Switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.dataset.tab;
+                
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-tab`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // Study Mode Functionality
+        function initializeStudyMode() {
+            // Add click event to options
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    options.forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Show submit button if it's hidden
+                    if (submitBtn.style.display === 'none') {
+                        submitBtn.style.display = 'flex';
+                        nextBtn.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Submit answer
+            submitBtn.addEventListener('click', function() {
+                const selectedOption = document.querySelector('.option.selected');
+                
+                if (!selectedOption) {
+                    alert('Please select an answer first!');
+                    return;
+                }
+                
+                // For demo purposes, let's assume option D is correct
+                const correctOption = document.querySelector('.option[data-option="d"]');
+                
+                // Show correct/incorrect styling
+                if (selectedOption.dataset.option === 'd') {
+                    selectedOption.classList.add('correct');
+                    
+                    // Update stats
+                    questionsAnswered++;
+                    correctAnswers++;
+                    
+                    // Calculate XP earned (base + bonus)
+                    const baseXP = 20;
+                    const bonusXP = 5;
+                    const totalXP = baseXP + bonusXP;
+                    
+                    // Show XP notification
+                    xpNotification.style.display = 'block';
+                    xpNotification.innerHTML = `
+                        <h3><i class="fas fa-award"></i> XP Earned!</h3>
+                        <p>You earned <strong class="xp-earned">${baseXP}</strong> XP for answering correctly!</p>
+                        <p>Bonus: +${bonusXP} XP for your first correct answer!</p>
+                    `;
+                    
+                    // Update XP and stats
+                    updateXP(totalXP, "Correct answer");
+                    
+                } else {
+                    selectedOption.classList.add('incorrect');
+                    correctOption.classList.add('correct');
+                    
+                    // Update stats
+                    questionsAnswered++;
+                    
+                    // Calculate XP earned (only base for incorrect)
+                    const baseXP = 5;
+                    
+                    // Show XP notification
+                    xpNotification.style.display = 'block';
+                    xpNotification.innerHTML = `
+                        <h3><i class="fas fa-award"></i> XP Earned</h3>
+                        <p>You earned <strong class="xp-earned">${baseXP}</strong> XP for attempting the question. Try again for more XP!</p>
+                    `;
+                    
+                    // Update XP and stats
+                    updateXP(baseXP, "Attempted question");
+                }
+                
+                // Update study stats
+                updateStudyStats();
+                
+                // Disable all options after submission
+                options.forEach(option => {
+                    option.style.pointerEvents = 'none';
                 });
                 
-                // Add selected class to clicked option
-                this.classList.add('selected');
-                
-                // Show submit button if it's hidden
-                if (submitBtn.style.display === 'none') {
-                    submitBtn.style.display = 'flex';
-                    nextBtn.style.display = 'none';
-                }
-            });
-        });
-        
-        // Submit answer
-        submitBtn.addEventListener('click', function() {
-            const selectedOption = document.querySelector('.option.selected');
-            
-            if (!selectedOption) {
-                alert('Please select an answer first!');
-                return;
-            }
-            
-            // For demo purposes, let's assume option A is correct
-            const correctOption = document.querySelector('.option[data-option="a"]');
-            
-            // Show correct/incorrect styling
-            if (selectedOption.dataset.option === 'a') {
-                selectedOption.classList.add('correct');
-                
-                // Show XP notification
-                xpNotification.style.display = 'block';
-                xpNotification.querySelector('.xp-earned').textContent = '50';
-                
-                // Update XP
-                currentXP += 50;
-                currentXpElement.textContent = currentXP.toLocaleString();
-                
-                // Update progress bar slightly
-                const progressFill = document.querySelector('.level-card .progress-fill');
-                const currentWidth = parseInt(progressFill.style.width);
-                progressFill.style.width = Math.min(currentWidth + 4, 100) + '%';
-                
                 // Change button to Next Question
                 submitBtn.style.display = 'none';
                 nextBtn.style.display = 'flex';
-            } else {
-                selectedOption.classList.add('incorrect');
-                correctOption.classList.add('correct');
-                
-                // Show XP notification with reduced XP
-                xpNotification.style.display = 'block';
-                xpNotification.querySelector('.xp-earned').textContent = '10';
-                xpNotification.innerHTML = '<h3><i class="fas fa-award"></i> XP Earned</h3><p>You earned <strong class="xp-earned">10</strong> XP for attempting the question. Try again for more XP!</p>';
-                
-                // Update XP
-                currentXP += 10;
-                currentXpElement.textContent = currentXP.toLocaleString();
-                
-                // Change button to Next Question
-                submitBtn.style.display = 'none';
-                nextBtn.style.display = 'flex';
-            }
-            
-            // Disable all options after submission
-            options.forEach(option => {
-                option.style.pointerEvents = 'none';
-            });
-        });
-        
-        // Next question
-        nextBtn.addEventListener('click', function() {
-            // Reset options
-            options.forEach(option => {
-                option.classList.remove('selected', 'correct', 'incorrect');
-                option.style.pointerEvents = 'auto';
             });
             
-            // Hide XP notification
-            xpNotification.style.display = 'none';
-            
-            // Change button back to Submit
-            submitBtn.style.display = 'flex';
-            nextBtn.style.display = 'none';
-            
-            // Update question number (for demo)
-            const questionTitle = document.querySelector('.question-title');
-            const currentNumber = parseInt(questionTitle.textContent.match(/\d+/)[0]);
-            questionTitle.textContent = `Question #${currentNumber + 1}`;
-            
-            // Change difficulty randomly for demo
-            const difficultyElement = document.querySelector('.difficulty');
-            const difficulties = ['easy', 'medium', 'hard'];
-            const randomDifficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
-            
-            difficultyElement.className = 'difficulty ' + randomDifficulty;
-            difficultyElement.textContent = randomDifficulty.charAt(0).toUpperCase() + randomDifficulty.slice(1);
-        });
-        
-        // Get hint
-        hintBtn.addEventListener('click', function() {
-            if (currentXP >= 10) {
-                currentXP -= 10;
-                currentXpElement.textContent = currentXP.toLocaleString();
+            // Next question
+            nextBtn.addEventListener('click', function() {
+                // Reset options
+                options.forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                    option.style.pointerEvents = 'auto';
+                });
                 
-                alert("Hint: The x-intercepts occur when f(x) = 0. Try factoring the quadratic equation or using the quadratic formula.");
-            } else {
-                alert("You don't have enough XP to get a hint. Answer more questions to earn XP!");
-            }
-        });
-        
-        // Initialize some interactions
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animate XP counter on load
-            animateCounter(currentXpElement, 0, currentXP, 1500);
-        });
-        
-        // Helper function to animate counter
-        function animateCounter(element, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const value = Math.floor(progress * (end - start) + start);
-                element.textContent = value.toLocaleString();
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
+                // Hide XP notification
+                xpNotification.style.display = 'none';
+                
+                // Change button back to Submit
+                submitBtn.style.display = 'flex';
+                nextBtn.style.display = 'none';
+                
+                // Update question number
+                const questionTitle = document.querySelector('.question-title');
+                const currentNumber = parseInt(questionTitle.textContent.match(/\d+/)[0]);
+                questionTitle.textContent = `Question #${currentNumber + 1}`;
+                
+                // Update question text for demo
+                const questionTexts = [
+                    "What is the capital of France?",
+                    "Solve for x: 2x + 5 = 15",
+                    "Which planet is known as the Red Planet?",
+                    "Who wrote 'Romeo and Juliet'?"
+                ];
+                const randomQuestion = questionTexts[Math.floor(Math.random() * questionTexts.length)];
+                document.querySelector('.question-text').textContent = randomQuestion;
+                
+                // Update options for demo
+                const optionTexts = [
+                    ["Paris", "London", "Berlin", "Madrid"],
+                    ["x = 5", "x = 10", "x = 7", "x = 8"],
+                    ["Mars", "Venus", "Jupiter", "Saturn"],
+                    ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"]
+                ];
+                const randomOptions = optionTexts[Math.floor(Math.random() * optionTexts.length)];
+                
+                options.forEach((option, index) => {
+                    option.querySelector('.option-text').textContent = randomOptions[index];
+                });
+                
+                // Change difficulty randomly for demo
+                const difficultyElement = document.querySelector('.difficulty');
+                const difficulties = ['easy', 'medium', 'hard'];
+                const randomDifficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
+                
+                difficultyElement.className = 'difficulty ' + randomDifficulty;
+                difficultyElement.textContent = randomDifficulty.charAt(0).toUpperCase() + randomDifficulty.slice(1);
+                
+                // Update study hours (simulate time spent)
+                studyHours += 0.1;
+                updateStudyStats();
+            });
+            
+            // Get hint
+            hintBtn.addEventListener('click', function() {
+                if (currentXP >= 10) {
+                    currentXP -= 10;
+                    updateXPDisplay();
+                    
+                    alert("Hint: Read the question carefully and eliminate obviously wrong answers first.");
+                } else {
+                    alert("You don't have enough XP to get a hint. Answer more questions to earn XP!");
                 }
-            };
-            window.requestAnimationFrame(step);
+            });
         }
+        
+        // Update XP and stats
+        function updateXP(amount, reason) {
+            currentXP += amount;
+            updateXPDisplay();
+            
+            // Update level
+            updateLevel();
+            
+            // Add to XP history
+            addToXPHistory(amount, reason);
+        }
+        
+        function updateXPDisplay() {
+            currentXpElement.textContent = currentXP;
+        }
+        
+        function updateLevel() {
+            // Calculate level based on XP
+            const newLevel = Math.floor(currentXP / levelThreshold) + 1;
+            
+            if (newLevel > userLevel) {
+                userLevel = newLevel;
+                currentLevelElement.textContent = userLevel;
+                
+                // Update level label
+                const levelLabels = ["Beginner", "Learner", "Intermediate", "Advanced", "Expert", "Master"];
+                levelLabelElement.textContent = levelLabels[Math.min(userLevel - 1, levelLabels.length - 1)];
+                
+                // Show level up notification
+                if (userLevel > 1) {
+                    const notification = document.createElement('div');
+                    notification.className = 'card';
+                    notification.style.backgroundColor = '#2a9d8f';
+                    notification.style.color = 'white';
+                    notification.style.marginTop = '20px';
+                    notification.innerHTML = `
+                        <h3><i class="fas fa-trophy"></i> Level Up!</h3>
+                        <p>Congratulations! You've reached Level ${userLevel}!</p>
+                    `;
+                    document.querySelector('.left-column').appendChild(notification);
+                    
+                    // Remove notification after 5 seconds
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 5000);
+                }
+            }
+            
+            // Update level progress
+            const progressInLevel = currentXP % levelThreshold;
+            const progressPercent = (progressInLevel / levelThreshold) * 100;
+            levelProgressElement.textContent = `${progressInLevel}/${levelThreshold} XP`;
+            levelProgressBar.style.width = `${progressPercent}%`;
+        }
+        
+        function updateStudyStats() {
+            questionsAnsweredElement.textContent = questionsAnswered;
+            
+            const accuracy = questionsAnswered > 0 ? Math.round((correctAnswers / questionsAnswered) * 100) : 0;
+            accuracyRateElement.textContent = `${accuracy}%`;
+            
+            studyHoursElement.textContent = studyHours.toFixed(1);
+            
+            // For demo, subjects mastered is based on level
+            subjectsMasteredElement.textContent = Math.floor(userLevel / 2);
+        }
+        
+        function addToXPHistory(amount, reason) {
+            // Hide empty state if it's the first item
+            if (emptyXpHistory.style.display !== 'none') {
+                emptyXpHistory.style.display = 'none';
+                xpHistoryList.style.display = 'block';
+            }
+            
+            // Create history item
+            const historyItem = document.createElement('div');
+            historyItem.className = 'xp-history-item';
+            
+            const subjects = ["Mathematics", "Science", "History", "Geography", "Language"];
+            const randomSubject = subjects[Math.floor(Math.random() * subjects.length)];
+            const subjectIcons = {
+                "Mathematics": "fa-calculator",
+                "Science": "fa-atom",
+                "History": "fa-landmark",
+                "Geography": "fa-globe-americas",
+                "Language": "fa-language"
+            };
+            
+            const colors = ["#4361ee", "#f72585", "#4cc9f0", "#f8961e", "#2a9d8f"];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            historyItem.innerHTML = `
+                <div class="xp-history-subject">
+                    <div class="xp-history-icon" style="background-color: ${randomColor};">
+                        <i class="fas ${subjectIcons[randomSubject]}"></i>
+                    </div>
+                    <div>
+                        <div>${reason}</div>
+                        <div class="xp-history-time">Just now</div>
+                    </div>
+                </div>
+                <div class="xp-history-xp">+${amount} XP</div>
+            `;
+            
+            // Add to the top of the list
+            xpHistoryList.insertBefore(historyItem, xpHistoryList.firstChild);
+            
+            // Limit to 5 items
+            if (xpHistoryList.children.length > 5) {
+                xpHistoryList.removeChild(xpHistoryList.lastChild);
+            }
+        }
+        
+        // Quiz Maker Functionality
+        function initializeQuizMaker() {
+            let correctAnswer = null;
+            
+            // Mark answer as correct
+            correctToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const option = this.dataset.option;
+                    
+                    // If this option is already correct, unmark it
+                    if (this.classList.contains('correct')) {
+                        this.classList.remove('correct');
+                        this.textContent = 'Mark as Correct';
+                        correctAnswer = null;
+                    } else {
+                        // Remove correct class from all toggles
+                        correctToggles.forEach(t => {
+                            t.classList.remove('correct');
+                            t.textContent = 'Mark as Correct';
+                        });
+                        
+                        // Mark this option as correct
+                        this.classList.add('correct');
+                        this.textContent = 'Correct Answer';
+                        correctAnswer = option;
+                    }
+                });
+            });
+            
+            // Clear form
+            clearBtn.addEventListener('click', function() {
+                questionText.value = '';
+                answerInputs.forEach(input => input.value = '');
+                correctToggles.forEach(toggle => {
+                    toggle.classList.remove('correct');
+                    toggle.textContent = 'Mark as Correct';
+                });
+                correctAnswer = null;
+            });
+            
+            // Save question
+            saveQuestionBtn.addEventListener('click', function() {
+                // Validate form
+                if (!questionText.value.trim()) {
+                    alert('Please enter a question!');
+                    return;
+                }
+                
+                // Check if all answer options are filled
+                let allAnswersFilled = true;
+                const answers = {};
+                
+                answerInputs.forEach(input => {
+                    const option = input.id.split('-')[1];
+                    answers[option] = input.value.trim();
+                    
+                    if (!input.value.trim()) {
+                        allAnswersFilled = false;
+                    }
+                });
+                
+                if (!allAnswersFilled) {
+                    alert('Please fill in all answer options!');
+                    return;
+                }
+                
+                if (!correctAnswer) {
+                    alert('Please mark the correct answer!');
+                    return;
+                }
+                
+                // Create quiz object
+                const quiz = {
+                    id: Date.now(),
+                    question: questionText.value.trim(),
+                    answers: answers,
+                    correctAnswer: correctAnswer,
+                    date: new Date().toLocaleDateString()
+                };
+                
+                // Add to created quizzes array
+                createdQuizzes.push(quiz);
+                
+                // Update UI
+                addQuizToList(quiz);
+                
+                // Clear form
+                clearBtn.click();
+                
+                // Show success message
+                alert('Question saved successfully!');
+            });
+        }
+        
+        function addQuizToList(quiz) {
+            // Hide empty state if it's the first quiz
+            if (emptyQuizList.style.display !== 'none') {
+                emptyQuizList.style.display = 'none';
+            }
+            
+            // Create quiz item
+            const quizItem = document.createElement('div');
+            quizItem.className = 'quiz-item';
+            quizItem.dataset.id = quiz.id;
+            
+            quizItem.innerHTML = `
+                <h4>${quiz.question.substring(0, 50)}${quiz.question.length > 50 ? '...' : ''}</h4>
+                <p>Correct answer: Option ${quiz.correctAnswer.toUpperCase()}</p>
+                <div class="quiz-meta">
+                    <span>Created: ${quiz.date}</span>
+                    <span>ID: ${quiz.id}</span>
+                </div>
+            `;
+            
+            // Add to the top of the list
+            quizList.insertBefore(quizItem, quizList.firstChild);
+        }
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeStudyMode();
+            initializeQuizMaker();
+            updateStudyStats();
+            updateLevel();
+        });
     </script>
 </body>
 </html>
