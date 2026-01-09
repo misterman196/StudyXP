@@ -350,6 +350,15 @@
             background-color: #21867a;
         }
 
+        .btn-warning {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background-color: #e68900;
+        }
+
         /* Sidebar */
         .sidebar {
             display: flex;
@@ -452,7 +461,8 @@
         }
 
         .form-group input[type="text"],
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 15px;
             border: 2px solid #e9ecef;
@@ -462,7 +472,8 @@
         }
 
         .form-group input[type="text"]:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--primary);
         }
@@ -539,7 +550,8 @@
             margin-top: 30px;
         }
 
-        .created-quizzes {
+        /* Groups Management */
+        .groups-management {
             background-color: white;
             border-radius: var(--border-radius);
             padding: 30px;
@@ -547,7 +559,93 @@
             margin-top: 30px;
         }
 
-        .created-quizzes h3 {
+        .groups-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .groups-header h3 {
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .groups-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .group-item {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .group-item h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .group-item p {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .group-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        .group-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .group-action-btn {
+            padding: 6px 12px;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .group-action-btn:hover {
+            background-color: #f8f9fa;
+        }
+
+        .group-action-btn.study {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .group-action-btn.study:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Created Questions List */
+        .created-questions {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+        }
+
+        .created-questions h3 {
             color: var(--secondary);
             margin-bottom: 20px;
             display: flex;
@@ -555,37 +653,52 @@
             gap: 10px;
         }
 
-        .quiz-list {
+        .questions-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
 
-        .quiz-item {
+        .question-item {
             background-color: #f8f9fa;
             border-radius: 10px;
             padding: 20px;
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid #e9ecef;
+            cursor: move;
         }
 
-        .quiz-item h4 {
+        .question-item h4 {
             margin-bottom: 10px;
             color: var(--dark);
         }
 
-        .quiz-item p {
+        .question-item p {
             color: #6c757d;
             font-size: 14px;
             margin-bottom: 15px;
         }
 
-        .quiz-meta {
+        .question-meta {
             display: flex;
             justify-content: space-between;
             font-size: 13px;
             color: #6c757d;
         }
 
+        .question-group-select {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .question-group-select select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        /* Empty State */
         .empty-state {
             text-align: center;
             padding: 40px 20px;
@@ -596,6 +709,50 @@
             font-size: 48px;
             margin-bottom: 15px;
             color: #dee2e6;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            color: var(--secondary);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6c757d;
         }
 
         /* Footer */
@@ -643,6 +800,12 @@
             .quiz-maker-actions .btn {
                 width: 100%;
             }
+
+            .groups-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -669,6 +832,7 @@
         <div class="tabs">
             <div class="tab active" data-tab="study">Study Mode</div>
             <div class="tab" data-tab="quiz-maker">Quiz Maker</div>
+            <div class="tab" data-tab="groups">Question Groups</div>
         </div>
 
         <!-- Study Mode Tab -->
@@ -676,32 +840,47 @@
             <div class="main-content">
                 <!-- Left Column -->
                 <div class="left-column">
+                    <!-- Group Selection (Only shown when studying a group) -->
+                    <div class="card" id="group-study-header" style="display: none;">
+                        <h3><i class="fas fa-layer-group"></i> Studying: <span id="current-group-name"></span></h3>
+                        <p>Questions: <span id="group-questions-count">0</span> | Progress: <span id="group-progress">0/0</span></p>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Group Progress</span>
+                                <span id="group-progress-percent">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="group-progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Dashboard Cards -->
-                    <div class="dashboard-cards">
+                    <div class="dashboard-cards" id="study-dashboard">
                         <div class="card">
                             <h3><i class="fas fa-book"></i> Current Subject</h3>
-                            <p>Select a subject to begin studying</p>
+                            <p id="current-subject">Select a subject or group to begin studying</p>
                             <div class="progress-container">
                                 <div class="progress-label">
                                     <span>Progress</span>
-                                    <span>0%</span>
+                                    <span id="subject-progress">0%</span>
                                 </div>
                                 <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 0%"></div>
+                                    <div class="progress-fill" id="subject-progress-bar" style="width: 0%"></div>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="card">
                             <h3><i class="fas fa-trophy"></i> Current Streak</h3>
-                            <p>Start your first study session!</p>
+                            <p id="streak-message">Start your first study session!</p>
                             <div class="progress-container">
                                 <div class="progress-label">
                                     <span>Next milestone: 7 days</span>
-                                    <span>0%</span>
+                                    <span id="streak-progress">0%</span>
                                 </div>
                                 <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 0%"></div>
+                                    <div class="progress-fill" id="streak-progress-bar" style="width: 0%"></div>
                                 </div>
                             </div>
                         </div>
@@ -710,13 +889,13 @@
                     <!-- Question Card -->
                     <div class="question-card">
                         <div class="question-header">
-                            <h2 class="question-title">Question #1</h2>
-                            <div class="difficulty easy">Easy</div>
+                            <h2 class="question-title" id="question-number">Question #1</h2>
+                            <div class="difficulty easy" id="question-difficulty">Easy</div>
                         </div>
                         
-                        <p class="question-text">Welcome to StudyXP! Select an answer to begin your learning journey.</p>
+                        <p class="question-text" id="question-text">Welcome to StudyXP! Select an answer to begin your learning journey.</p>
                         
-                        <div class="options">
+                        <div class="options" id="question-options">
                             <div class="option" data-option="a">
                                 <div class="option-letter">A</div>
                                 <div class="option-text">Start Learning</div>
@@ -751,12 +930,24 @@
                     <!-- XP Notification (Hidden by default) -->
                     <div class="card" id="xp-notification" style="display: none;">
                         <h3><i class="fas fa-award"></i> XP Earned!</h3>
-                        <p>You earned <strong class="xp-earned">0</strong> XP!</p>
+                        <p id="xp-notification-text">You earned <strong class="xp-earned">0</strong> XP!</p>
                     </div>
                 </div>
 
                 <!-- Sidebar -->
                 <div class="sidebar">
+                    <!-- Available Groups -->
+                    <div class="stats-card" id="available-groups">
+                        <h3><i class="fas fa-layer-group"></i> Study Groups</h3>
+                        <div class="empty-state" id="empty-groups-study">
+                            <i class="fas fa-folder-open"></i>
+                            <p>No study groups available. Create groups in the Question Groups tab.</p>
+                        </div>
+                        <div id="groups-study-list" style="display: none;">
+                            <!-- Groups will be added here dynamically -->
+                        </div>
+                    </div>
+                    
                     <!-- Stats Card -->
                     <div class="stats-card">
                         <h3><i class="fas fa-chart-line"></i> Study Stats</h3>
@@ -823,6 +1014,11 @@
                 </div>
                 
                 <div class="form-group">
+                    <label for="question-category">Category/Subject</label>
+                    <input type="text" id="question-category" placeholder="e.g., Mathematics, Science, History">
+                </div>
+                
+                <div class="form-group">
                     <label>Answer Options (Mark one as correct)</label>
                     <div class="answer-options">
                         <div class="answer-option" data-option="a">
@@ -861,16 +1057,69 @@
                 </div>
             </div>
             
-            <!-- Created Quizzes List -->
-            <div class="created-quizzes">
+            <!-- Created Questions List -->
+            <div class="created-questions">
                 <h3><i class="fas fa-list"></i> Your Created Questions</h3>
                 <div class="empty-state" id="empty-quiz-list">
                     <i class="fas fa-question-circle"></i>
                     <p>You haven't created any questions yet. Create your first question above!</p>
                 </div>
-                <div class="quiz-list" id="quiz-list">
-                    <!-- Created quizzes will appear here -->
+                <div class="questions-list" id="quiz-list">
+                    <!-- Created questions will appear here -->
                 </div>
+            </div>
+        </div>
+
+        <!-- Question Groups Tab -->
+        <div class="tab-content" id="groups-tab">
+            <!-- Create New Group -->
+            <div class="quiz-maker">
+                <h2><i class="fas fa-folder-plus"></i> Create New Group</h2>
+                
+                <div class="form-group">
+                    <label for="group-name">Group Name</label>
+                    <input type="text" id="group-name" placeholder="Enter group name (e.g., Math Basics, Science Quiz)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="group-description">Description</label>
+                    <textarea id="group-description" placeholder="Describe what this group contains..."></textarea>
+                </div>
+                
+                <div class="quiz-maker-actions">
+                    <button class="btn btn-secondary" id="clear-group-btn">
+                        <i class="fas fa-eraser"></i> Clear
+                    </button>
+                    <button class="btn btn-success" id="create-group-btn">
+                        <i class="fas fa-plus-circle"></i> Create Group
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Groups Management -->
+            <div class="groups-management">
+                <div class="groups-header">
+                    <h3><i class="fas fa-folder"></i> Your Question Groups</h3>
+                    <button class="btn btn-primary" id="refresh-groups-btn">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+                
+                <div class="empty-state" id="empty-groups-list">
+                    <i class="fas fa-folder-open"></i>
+                    <p>You haven't created any groups yet. Create your first group above!</p>
+                </div>
+                <div class="groups-list" id="groups-list">
+                    <!-- Groups will appear here -->
+                </div>
+            </div>
+            
+            <!-- Drag and Drop Instructions -->
+            <div class="card">
+                <h3><i class="fas fa-mouse-pointer"></i> How to Organize Questions</h3>
+                <p>1. Go to the <strong>Quiz Maker</strong> tab to create questions</p>
+                <p>2. In the Quiz Maker tab, use the dropdown next to each question to assign it to a group</p>
+                <p>3. Come back here to study your groups or manage them</p>
             </div>
         </div>
 
@@ -878,6 +1127,34 @@
         <footer>
             <p>StudyXP © 2023 | Gamified Learning Platform | Keep studying to earn more XP and level up!</p>
         </footer>
+    </div>
+
+    <!-- Create Group Modal -->
+    <div class="modal" id="edit-group-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> Edit Group</h3>
+                <button class="close-modal" id="close-edit-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="edit-group-name">Group Name</label>
+                <input type="text" id="edit-group-name">
+            </div>
+            <div class="form-group">
+                <label for="edit-group-description">Description</label>
+                <textarea id="edit-group-description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Questions in this group (<span id="group-questions-count-modal">0</span>)</label>
+                <div id="group-questions-list" class="questions-list">
+                    <!-- Questions in this group will appear here -->
+                </div>
+            </div>
+            <div class="quiz-maker-actions">
+                <button class="btn btn-secondary" id="cancel-edit-btn">Cancel</button>
+                <button class="btn btn-success" id="save-edit-btn">Save Changes</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -888,7 +1165,89 @@
         let studyHours = 0;
         let userLevel = 1;
         let levelThreshold = 100;
-        let createdQuizzes = [];
+        let createdQuestions = [];
+        let questionGroups = [];
+        let currentStudyGroup = null;
+        let currentQuestionIndex = 0;
+        let groupQuestionsAnswered = 0;
+        
+        // Sample groups for initial demo
+        const sampleGroups = [
+            {
+                id: 1,
+                name: "Mathematics Basics",
+                description: "Basic arithmetic and algebra questions",
+                questions: [1, 2],
+                date: new Date().toLocaleDateString()
+            },
+            {
+                id: 2,
+                name: "Science Fundamentals",
+                description: "Basic science concepts",
+                questions: [3, 4],
+                date: new Date().toLocaleDateString()
+            }
+        ];
+        
+        // Sample questions for initial demo
+        const sampleQuestions = [
+            {
+                id: 1,
+                question: "What is 15 + 27?",
+                category: "Mathematics",
+                answers: {
+                    a: "32",
+                    b: "42",
+                    c: "52",
+                    d: "62"
+                },
+                correctAnswer: "b",
+                groupId: 1
+            },
+            {
+                id: 2,
+                question: "Solve for x: 2x + 5 = 15",
+                category: "Mathematics",
+                answers: {
+                    a: "x = 5",
+                    b: "x = 10",
+                    c: "x = 7",
+                    d: "x = 8"
+                },
+                correctAnswer: "a",
+                groupId: 1
+            },
+            {
+                id: 3,
+                question: "Which planet is known as the Red Planet?",
+                category: "Science",
+                answers: {
+                    a: "Venus",
+                    b: "Mars",
+                    c: "Jupiter",
+                    d: "Saturn"
+                },
+                correctAnswer: "b",
+                groupId: 2
+            },
+            {
+                id: 4,
+                question: "What is H2O commonly known as?",
+                category: "Science",
+                answers: {
+                    a: "Carbon Dioxide",
+                    b: "Salt",
+                    c: "Water",
+                    d: "Oxygen"
+                },
+                correctAnswer: "c",
+                groupId: 2
+            }
+        ];
+        
+        // Initialize with sample data
+        questionGroups = [...sampleGroups];
+        createdQuestions = [...sampleQuestions];
         
         // DOM Elements - Study Mode
         const tabs = document.querySelectorAll('.tab');
@@ -909,15 +1268,54 @@
         const levelProgressBar = document.getElementById('level-progress-bar');
         const emptyXpHistory = document.getElementById('empty-xp-history');
         const xpHistoryList = document.getElementById('xp-history-list');
+        const groupStudyHeader = document.getElementById('group-study-header');
+        const currentGroupName = document.getElementById('current-group-name');
+        const groupQuestionsCount = document.getElementById('group-questions-count');
+        const groupProgress = document.getElementById('group-progress');
+        const groupProgressPercent = document.getElementById('group-progress-percent');
+        const groupProgressBar = document.getElementById('group-progress-bar');
+        const currentSubject = document.getElementById('current-subject');
+        const subjectProgress = document.getElementById('subject-progress');
+        const subjectProgressBar = document.getElementById('subject-progress-bar');
+        const streakMessage = document.getElementById('streak-message');
+        const streakProgress = document.getElementById('streak-progress');
+        const streakProgressBar = document.getElementById('streak-progress-bar');
+        const questionNumber = document.getElementById('question-number');
+        const questionDifficulty = document.getElementById('question-difficulty');
+        const questionText = document.getElementById('question-text');
+        const questionOptions = document.getElementById('question-options');
+        const xpNotificationText = document.getElementById('xp-notification-text');
+        const emptyGroupsStudy = document.getElementById('empty-groups-study');
+        const groupsStudyList = document.getElementById('groups-study-list');
         
         // DOM Elements - Quiz Maker
-        const questionText = document.getElementById('question-text');
+        const quizQuestionText = document.getElementById('question-text');
+        const questionCategory = document.getElementById('question-category');
         const answerInputs = document.querySelectorAll('.answer-input');
         const correctToggles = document.querySelectorAll('.correct-toggle');
         const clearBtn = document.getElementById('clear-btn');
         const saveQuestionBtn = document.getElementById('save-question-btn');
         const emptyQuizList = document.getElementById('empty-quiz-list');
         const quizList = document.getElementById('quiz-list');
+        
+        // DOM Elements - Groups Tab
+        const groupName = document.getElementById('group-name');
+        const groupDescription = document.getElementById('group-description');
+        const clearGroupBtn = document.getElementById('clear-group-btn');
+        const createGroupBtn = document.getElementById('create-group-btn');
+        const refreshGroupsBtn = document.getElementById('refresh-groups-btn');
+        const emptyGroupsList = document.getElementById('empty-groups-list');
+        const groupsList = document.getElementById('groups-list');
+        
+        // DOM Elements - Modal
+        const editGroupModal = document.getElementById('edit-group-modal');
+        const closeEditModal = document.getElementById('close-edit-modal');
+        const cancelEditBtn = document.getElementById('cancel-edit-btn');
+        const editGroupName = document.getElementById('edit-group-name');
+        const editGroupDescription = document.getElementById('edit-group-description');
+        const groupQuestionsCountModal = document.getElementById('group-questions-count-modal');
+        const groupQuestionsList = document.getElementById('group-questions-list');
+        const saveEditBtn = document.getElementById('save-edit-btn');
         
         // Tab Switching
         tabs.forEach(tab => {
@@ -935,16 +1333,26 @@
                         content.classList.add('active');
                     }
                 });
+                
+                // Refresh groups display when switching to groups tab
+                if (tabId === 'groups') {
+                    updateGroupsList();
+                }
+                
+                // Refresh study groups when switching to study tab
+                if (tabId === 'study') {
+                    updateStudyGroupsList();
+                }
             });
         });
         
         // Study Mode Functionality
         function initializeStudyMode() {
             // Add click event to options
-            options.forEach(option => {
+            questionOptions.querySelectorAll('.option').forEach(option => {
                 option.addEventListener('click', function() {
                     // Remove selected class from all options
-                    options.forEach(opt => {
+                    questionOptions.querySelectorAll('.option').forEach(opt => {
                         opt.classList.remove('selected');
                     });
                     
@@ -961,66 +1369,85 @@
             
             // Submit answer
             submitBtn.addEventListener('click', function() {
-                const selectedOption = document.querySelector('.option.selected');
+                const selectedOption = questionOptions.querySelector('.option.selected');
                 
                 if (!selectedOption) {
                     alert('Please select an answer first!');
                     return;
                 }
                 
-                // For demo purposes, let's assume option D is correct
-                const correctOption = document.querySelector('.option[data-option="d"]');
+                // Get current question
+                let currentQuestion;
+                if (currentStudyGroup) {
+                    const groupQuestions = createdQuestions.filter(q => q.groupId === currentStudyGroup.id);
+                    currentQuestion = groupQuestions[currentQuestionIndex];
+                } else {
+                    // Default demo question
+                    currentQuestion = {
+                        id: 0,
+                        correctAnswer: "d"
+                    };
+                }
+                
+                const selectedAnswer = selectedOption.dataset.option;
+                const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
                 
                 // Show correct/incorrect styling
-                if (selectedOption.dataset.option === 'd') {
+                if (isCorrect) {
                     selectedOption.classList.add('correct');
                     
                     // Update stats
                     questionsAnswered++;
                     correctAnswers++;
+                    if (currentStudyGroup) groupQuestionsAnswered++;
                     
                     // Calculate XP earned (base + bonus)
-                    const baseXP = 20;
+                    const baseXP = currentStudyGroup ? 25 : 20;
                     const bonusXP = 5;
                     const totalXP = baseXP + bonusXP;
                     
                     // Show XP notification
                     xpNotification.style.display = 'block';
-                    xpNotification.innerHTML = `
-                        <h3><i class="fas fa-award"></i> XP Earned!</h3>
-                        <p>You earned <strong class="xp-earned">${baseXP}</strong> XP for answering correctly!</p>
-                        <p>Bonus: +${bonusXP} XP for your first correct answer!</p>
-                    `;
+                    xpNotificationText.innerHTML = `You earned <strong class="xp-earned">${baseXP}</strong> XP for answering correctly!<br>Bonus: +${bonusXP} XP!`;
                     
                     // Update XP and stats
-                    updateXP(totalXP, "Correct answer");
+                    updateXP(totalXP, currentStudyGroup ? currentStudyGroup.name : "General Study");
                     
                 } else {
                     selectedOption.classList.add('incorrect');
-                    correctOption.classList.add('correct');
+                    
+                    // Highlight correct answer
+                    questionOptions.querySelectorAll('.option').forEach(option => {
+                        if (option.dataset.option === currentQuestion.correctAnswer) {
+                            option.classList.add('correct');
+                        }
+                    });
                     
                     // Update stats
                     questionsAnswered++;
+                    if (currentStudyGroup) groupQuestionsAnswered++;
                     
                     // Calculate XP earned (only base for incorrect)
-                    const baseXP = 5;
+                    const baseXP = currentStudyGroup ? 5 : 5;
                     
                     // Show XP notification
                     xpNotification.style.display = 'block';
-                    xpNotification.innerHTML = `
-                        <h3><i class="fas fa-award"></i> XP Earned</h3>
-                        <p>You earned <strong class="xp-earned">${baseXP}</strong> XP for attempting the question. Try again for more XP!</p>
-                    `;
+                    xpNotificationText.innerHTML = `You earned <strong class="xp-earned">${baseXP}</strong> XP for attempting the question. Try again for more XP!`;
                     
                     // Update XP and stats
-                    updateXP(baseXP, "Attempted question");
+                    updateXP(baseXP, currentStudyGroup ? currentStudyGroup.name : "General Study");
                 }
                 
                 // Update study stats
                 updateStudyStats();
                 
+                // Update group progress if studying a group
+                if (currentStudyGroup) {
+                    updateGroupProgress();
+                }
+                
                 // Disable all options after submission
-                options.forEach(option => {
+                questionOptions.querySelectorAll('.option').forEach(option => {
                     option.style.pointerEvents = 'none';
                 });
                 
@@ -1032,7 +1459,7 @@
             // Next question
             nextBtn.addEventListener('click', function() {
                 // Reset options
-                options.forEach(option => {
+                questionOptions.querySelectorAll('.option').forEach(option => {
                     option.classList.remove('selected', 'correct', 'incorrect');
                     option.style.pointerEvents = 'auto';
                 });
@@ -1044,45 +1471,24 @@
                 submitBtn.style.display = 'flex';
                 nextBtn.style.display = 'none';
                 
-                // Update question number
-                const questionTitle = document.querySelector('.question-title');
-                const currentNumber = parseInt(questionTitle.textContent.match(/\d+/)[0]);
-                questionTitle.textContent = `Question #${currentNumber + 1}`;
+                // Move to next question
+                currentQuestionIndex++;
                 
-                // Update question text for demo
-                const questionTexts = [
-                    "What is the capital of France?",
-                    "Solve for x: 2x + 5 = 15",
-                    "Which planet is known as the Red Planet?",
-                    "Who wrote 'Romeo and Juliet'?"
-                ];
-                const randomQuestion = questionTexts[Math.floor(Math.random() * questionTexts.length)];
-                document.querySelector('.question-text').textContent = randomQuestion;
-                
-                // Update options for demo
-                const optionTexts = [
-                    ["Paris", "London", "Berlin", "Madrid"],
-                    ["x = 5", "x = 10", "x = 7", "x = 8"],
-                    ["Mars", "Venus", "Jupiter", "Saturn"],
-                    ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"]
-                ];
-                const randomOptions = optionTexts[Math.floor(Math.random() * optionTexts.length)];
-                
-                options.forEach((option, index) => {
-                    option.querySelector('.option-text').textContent = randomOptions[index];
-                });
-                
-                // Change difficulty randomly for demo
-                const difficultyElement = document.querySelector('.difficulty');
-                const difficulties = ['easy', 'medium', 'hard'];
-                const randomDifficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
-                
-                difficultyElement.className = 'difficulty ' + randomDifficulty;
-                difficultyElement.textContent = randomDifficulty.charAt(0).toUpperCase() + randomDifficulty.slice(1);
-                
-                // Update study hours (simulate time spent)
-                studyHours += 0.1;
-                updateStudyStats();
+                // Load next question or finish group
+                if (currentStudyGroup) {
+                    const groupQuestions = createdQuestions.filter(q => q.groupId === currentStudyGroup.id);
+                    
+                    if (currentQuestionIndex < groupQuestions.length) {
+                        loadQuestion(groupQuestions[currentQuestionIndex]);
+                    } else {
+                        // Finished the group
+                        alert(`Congratulations! You've completed all questions in "${currentStudyGroup.name}"!`);
+                        resetStudyMode();
+                    }
+                } else {
+                    // Default demo mode - generate random question
+                    loadRandomQuestion();
+                }
             });
             
             // Get hint
@@ -1096,6 +1502,158 @@
                     alert("You don't have enough XP to get a hint. Answer more questions to earn XP!");
                 }
             });
+        }
+        
+        // Load a question
+        function loadQuestion(question) {
+            questionNumber.textContent = `Question #${currentQuestionIndex + 1}`;
+            questionText.textContent = question.question;
+            currentSubject.textContent = question.category;
+            
+            // Set answer options
+            const options = questionOptions.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                const letter = option.dataset.option;
+                option.querySelector('.option-text').textContent = question.answers[letter];
+            });
+            
+            // Set random difficulty for demo
+            const difficulties = ['easy', 'medium', 'hard'];
+            const randomDifficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
+            questionDifficulty.className = 'difficulty ' + randomDifficulty;
+            questionDifficulty.textContent = randomDifficulty.charAt(0).toUpperCase() + randomDifficulty.slice(1);
+        }
+        
+        // Load random question (for demo mode)
+        function loadRandomQuestion() {
+            const questionNumberInt = parseInt(questionNumber.textContent.match(/\d+/)[0]);
+            questionNumber.textContent = `Question #${questionNumberInt + 1}`;
+            
+            // Update question text for demo
+            const questionTexts = [
+                "What is the capital of France?",
+                "Solve for x: 2x + 5 = 15",
+                "Which planet is known as the Red Planet?",
+                "Who wrote 'Romeo and Juliet'?"
+            ];
+            const randomQuestion = questionTexts[Math.floor(Math.random() * questionTexts.length)];
+            questionText.textContent = randomQuestion;
+            
+            // Update options for demo
+            const optionTexts = [
+                ["Paris", "London", "Berlin", "Madrid"],
+                ["x = 5", "x = 10", "x = 7", "x = 8"],
+                ["Mars", "Venus", "Jupiter", "Saturn"],
+                ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"]
+            ];
+            const randomOptions = optionTexts[Math.floor(Math.random() * optionTexts.length)];
+            
+            questionOptions.querySelectorAll('.option').forEach((option, index) => {
+                option.querySelector('.option-text').textContent = randomOptions[index];
+            });
+            
+            // Change difficulty randomly for demo
+            const difficulties = ['easy', 'medium', 'hard'];
+            const randomDifficulty = difficulties[Math.floor(Math.random() * difficulties.length)];
+            questionDifficulty.className = 'difficulty ' + randomDifficulty;
+            questionDifficulty.textContent = randomDifficulty.charAt(0).toUpperCase() + randomDifficulty.slice(1);
+            
+            // Update study hours (simulate time spent)
+            studyHours += 0.1;
+            updateStudyStats();
+        }
+        
+        // Start studying a group
+        function startStudyingGroup(groupId) {
+            const group = questionGroups.find(g => g.id === groupId);
+            if (!group) return;
+            
+            currentStudyGroup = group;
+            currentQuestionIndex = 0;
+            groupQuestionsAnswered = 0;
+            
+            // Update UI for group study
+            groupStudyHeader.style.display = 'block';
+            currentGroupName.textContent = group.name;
+            
+            const groupQuestions = createdQuestions.filter(q => q.groupId === groupId);
+            groupQuestionsCount.textContent = groupQuestions.length;
+            groupProgress.textContent = `0/${groupQuestions.length}`;
+            groupProgressPercent.textContent = "0%";
+            groupProgressBar.style.width = "0%";
+            
+            currentSubject.textContent = `Group: ${group.name}`;
+            
+            // Load first question
+            if (groupQuestions.length > 0) {
+                loadQuestion(groupQuestions[0]);
+            } else {
+                questionText.textContent = "This group doesn't have any questions yet. Add questions in the Quiz Maker tab.";
+                questionOptions.style.display = 'none';
+                submitBtn.style.display = 'none';
+            }
+            
+            // Switch to study tab
+            tabs.forEach(t => t.classList.remove('active'));
+            document.querySelector('.tab[data-tab="study"]').classList.add('active');
+            
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === 'study-tab') {
+                    content.classList.add('active');
+                }
+            });
+        }
+        
+        // Update group progress
+        function updateGroupProgress() {
+            if (!currentStudyGroup) return;
+            
+            const groupQuestions = createdQuestions.filter(q => q.groupId === currentStudyGroup.id);
+            const totalQuestions = groupQuestions.length;
+            const progressPercent = totalQuestions > 0 ? Math.round((groupQuestionsAnswered / totalQuestions) * 100) : 0;
+            
+            groupProgress.textContent = `${groupQuestionsAnswered}/${totalQuestions}`;
+            groupProgressPercent.textContent = `${progressPercent}%`;
+            groupProgressBar.style.width = `${progressPercent}%`;
+            
+            // Update subject progress
+            subjectProgress.textContent = `${progressPercent}%`;
+            subjectProgressBar.style.width = `${progressPercent}%`;
+        }
+        
+        // Reset study mode (exit group study)
+        function resetStudyMode() {
+            currentStudyGroup = null;
+            currentQuestionIndex = 0;
+            groupQuestionsAnswered = 0;
+            
+            // Reset UI
+            groupStudyHeader.style.display = 'none';
+            currentSubject.textContent = "Select a subject or group to begin studying";
+            subjectProgress.textContent = "0%";
+            subjectProgressBar.style.width = "0%";
+            
+            // Reset question to default
+            questionNumber.textContent = "Question #1";
+            questionText.textContent = "Welcome to StudyXP! Select an answer to begin your learning journey.";
+            questionOptions.style.display = 'grid';
+            submitBtn.style.display = 'flex';
+            
+            // Reset options
+            questionOptions.querySelectorAll('.option').forEach((option, index) => {
+                const texts = ["Start Learning", "Earn XP", "Level Up", "All of the above"];
+                option.querySelector('.option-text').textContent = texts[index];
+                option.classList.remove('selected', 'correct', 'incorrect');
+                option.style.pointerEvents = 'auto';
+            });
+            
+            // Reset buttons
+            submitBtn.style.display = 'flex';
+            nextBtn.style.display = 'none';
+            
+            // Hide XP notification
+            xpNotification.style.display = 'none';
         }
         
         // Update XP and stats
@@ -1163,6 +1721,14 @@
             
             // For demo, subjects mastered is based on level
             subjectsMasteredElement.textContent = Math.floor(userLevel / 2);
+            
+            // Update streak (simulated)
+            const streakDays = Math.floor(questionsAnswered / 5);
+            streakMessage.textContent = streakDays > 0 ? `${streakDays} days in a row!` : "Start your first study session!";
+            
+            const streakPercent = Math.min(streakDays * 14, 100);
+            streakProgress.textContent = `${streakPercent}%`;
+            streakProgressBar.style.width = `${streakPercent}%`;
         }
         
         function addToXPHistory(amount, reason) {
@@ -1211,6 +1777,43 @@
             }
         }
         
+        // Update study groups list in sidebar
+        function updateStudyGroupsList() {
+            groupsStudyList.innerHTML = '';
+            
+            if (questionGroups.length === 0) {
+                emptyGroupsStudy.style.display = 'block';
+                groupsStudyList.style.display = 'none';
+                return;
+            }
+            
+            emptyGroupsStudy.style.display = 'none';
+            groupsStudyList.style.display = 'block';
+            
+            questionGroups.forEach(group => {
+                const groupQuestions = createdQuestions.filter(q => q.groupId === group.id);
+                const groupItem = document.createElement('div');
+                groupItem.className = 'group-item';
+                groupItem.innerHTML = `
+                    <h4>${group.name}</h4>
+                    <p>${group.description}</p>
+                    <div class="group-meta">
+                        <span>${groupQuestions.length} questions</span>
+                        <span>Created: ${group.date}</span>
+                    </div>
+                    <div class="group-actions">
+                        <button class="group-action-btn study" data-group-id="${group.id}">Study</button>
+                    </div>
+                `;
+                
+                groupItem.querySelector('.study').addEventListener('click', function() {
+                    startStudyingGroup(group.id);
+                });
+                
+                groupsStudyList.appendChild(groupItem);
+            });
+        }
+        
         // Quiz Maker Functionality
         function initializeQuizMaker() {
             let correctAnswer = null;
@@ -1242,7 +1845,8 @@
             
             // Clear form
             clearBtn.addEventListener('click', function() {
-                questionText.value = '';
+                quizQuestionText.value = '';
+                questionCategory.value = '';
                 answerInputs.forEach(input => input.value = '');
                 correctToggles.forEach(toggle => {
                     toggle.classList.remove('correct');
@@ -1254,8 +1858,13 @@
             // Save question
             saveQuestionBtn.addEventListener('click', function() {
                 // Validate form
-                if (!questionText.value.trim()) {
+                if (!quizQuestionText.value.trim()) {
                     alert('Please enter a question!');
+                    return;
+                }
+                
+                if (!questionCategory.value.trim()) {
+                    alert('Please enter a category!');
                     return;
                 }
                 
@@ -1282,59 +1891,283 @@
                     return;
                 }
                 
-                // Create quiz object
-                const quiz = {
+                // Create question object
+                const question = {
                     id: Date.now(),
-                    question: questionText.value.trim(),
+                    question: quizQuestionText.value.trim(),
+                    category: questionCategory.value.trim(),
                     answers: answers,
                     correctAnswer: correctAnswer,
+                    groupId: null, // No group by default
                     date: new Date().toLocaleDateString()
                 };
                 
-                // Add to created quizzes array
-                createdQuizzes.push(quiz);
+                // Add to created questions array
+                createdQuestions.push(question);
                 
                 // Update UI
-                addQuizToList(quiz);
+                addQuestionToList(question);
                 
                 // Clear form
                 clearBtn.click();
                 
                 // Show success message
-                alert('Question saved successfully!');
+                alert('Question saved successfully! You can assign it to a group using the dropdown.');
             });
+            
+            // Initialize questions list
+            updateQuestionsList();
         }
         
-        function addQuizToList(quiz) {
-            // Hide empty state if it's the first quiz
+        function addQuestionToList(question) {
+            // Hide empty state if it's the first question
             if (emptyQuizList.style.display !== 'none') {
                 emptyQuizList.style.display = 'none';
             }
             
-            // Create quiz item
-            const quizItem = document.createElement('div');
-            quizItem.className = 'quiz-item';
-            quizItem.dataset.id = quiz.id;
+            // Create question item
+            const questionItem = document.createElement('div');
+            questionItem.className = 'question-item';
+            questionItem.dataset.id = question.id;
             
-            quizItem.innerHTML = `
-                <h4>${quiz.question.substring(0, 50)}${quiz.question.length > 50 ? '...' : ''}</h4>
-                <p>Correct answer: Option ${quiz.correctAnswer.toUpperCase()}</p>
-                <div class="quiz-meta">
-                    <span>Created: ${quiz.date}</span>
-                    <span>ID: ${quiz.id}</span>
+            questionItem.innerHTML = `
+                <h4>${question.question.substring(0, 50)}${question.question.length > 50 ? '...' : ''}</h4>
+                <p>Category: ${question.category} | Correct: Option ${question.correctAnswer.toUpperCase()}</p>
+                <div class="question-meta">
+                    <span>Created: ${question.date}</span>
+                    <span>ID: ${question.id}</span>
+                </div>
+                <div class="question-group-select">
+                    <label>Assign to group:</label>
+                    <select class="group-select" data-question-id="${question.id}">
+                        <option value="">-- No Group --</option>
+                        ${questionGroups.map(group => `
+                            <option value="${group.id}" ${question.groupId === group.id ? 'selected' : ''}>${group.name}</option>
+                        `).join('')}
+                    </select>
                 </div>
             `;
             
+            // Add event listener for group selection
+            const select = questionItem.querySelector('.group-select');
+            select.addEventListener('change', function() {
+                const questionId = parseInt(this.dataset.questionId);
+                const groupId = this.value ? parseInt(this.value) : null;
+                
+                // Update question's group
+                const question = createdQuestions.find(q => q.id === questionId);
+                if (question) {
+                    question.groupId = groupId;
+                }
+                
+                // Update groups display
+                updateGroupsList();
+                updateStudyGroupsList();
+            });
+            
             // Add to the top of the list
-            quizList.insertBefore(quizItem, quizList.firstChild);
+            quizList.insertBefore(questionItem, quizList.firstChild);
+        }
+        
+        function updateQuestionsList() {
+            quizList.innerHTML = '';
+            
+            if (createdQuestions.length === 0) {
+                emptyQuizList.style.display = 'block';
+                return;
+            }
+            
+            emptyQuizList.style.display = 'none';
+            
+            // Add all questions to the list
+            createdQuestions.forEach(question => {
+                addQuestionToList(question);
+            });
+        }
+        
+        // Groups Management Functionality
+        function initializeGroupsTab() {
+            // Create new group
+            createGroupBtn.addEventListener('click', function() {
+                if (!groupName.value.trim()) {
+                    alert('Please enter a group name!');
+                    return;
+                }
+                
+                const group = {
+                    id: Date.now(),
+                    name: groupName.value.trim(),
+                    description: groupDescription.value.trim(),
+                    questions: [],
+                    date: new Date().toLocaleDateString()
+                };
+                
+                questionGroups.push(group);
+                
+                // Clear form
+                clearGroupBtn.click();
+                
+                // Update UI
+                updateGroupsList();
+                updateQuestionsList();
+                updateStudyGroupsList();
+                
+                alert(`Group "${group.name}" created successfully!`);
+            });
+            
+            // Clear group form
+            clearGroupBtn.addEventListener('click', function() {
+                groupName.value = '';
+                groupDescription.value = '';
+            });
+            
+            // Refresh groups
+            refreshGroupsBtn.addEventListener('click', function() {
+                updateGroupsList();
+            });
+            
+            // Modal functionality
+            closeEditModal.addEventListener('click', function() {
+                editGroupModal.style.display = 'none';
+            });
+            
+            cancelEditBtn.addEventListener('click', function() {
+                editGroupModal.style.display = 'none';
+            });
+            
+            // Initialize groups list
+            updateGroupsList();
+        }
+        
+        function updateGroupsList() {
+            groupsList.innerHTML = '';
+            
+            if (questionGroups.length === 0) {
+                emptyGroupsList.style.display = 'block';
+                return;
+            }
+            
+            emptyGroupsList.style.display = 'none';
+            
+            questionGroups.forEach(group => {
+                const groupQuestions = createdQuestions.filter(q => q.groupId === group.id);
+                const groupItem = document.createElement('div');
+                groupItem.className = 'group-item';
+                groupItem.innerHTML = `
+                    <h4>${group.name}</h4>
+                    <p>${group.description}</p>
+                    <div class="group-meta">
+                        <span>${groupQuestions.length} questions</span>
+                        <span>Created: ${group.date}</span>
+                    </div>
+                    <div class="group-actions">
+                        <button class="group-action-btn study" data-group-id="${group.id}">Study</button>
+                        <button class="group-action-btn edit" data-group-id="${group.id}">Edit</button>
+                        <button class="group-action-btn delete" data-group-id="${group.id}">Delete</button>
+                    </div>
+                `;
+                
+                // Add event listeners
+                groupItem.querySelector('.study').addEventListener('click', function() {
+                    startStudyingGroup(group.id);
+                });
+                
+                groupItem.querySelector('.edit').addEventListener('click', function() {
+                    openEditGroupModal(group.id);
+                });
+                
+                groupItem.querySelector('.delete').addEventListener('click', function() {
+                    if (confirm(`Are you sure you want to delete "${group.name}"? This will not delete the questions, just remove them from the group.`)) {
+                        // Remove group
+                        questionGroups = questionGroups.filter(g => g.id !== group.id);
+                        
+                        // Remove group from questions
+                        createdQuestions.forEach(q => {
+                            if (q.groupId === group.id) {
+                                q.groupId = null;
+                            }
+                        });
+                        
+                        // Update UI
+                        updateGroupsList();
+                        updateQuestionsList();
+                        updateStudyGroupsList();
+                        
+                        // If currently studying this group, reset study mode
+                        if (currentStudyGroup && currentStudyGroup.id === group.id) {
+                            resetStudyMode();
+                        }
+                    }
+                });
+                
+                groupsList.appendChild(groupItem);
+            });
+        }
+        
+        function openEditGroupModal(groupId) {
+            const group = questionGroups.find(g => g.id === groupId);
+            if (!group) return;
+            
+            // Fill modal with group data
+            editGroupName.value = group.name;
+            editGroupDescription.value = group.description;
+            
+            // Show questions in this group
+            const groupQuestions = createdQuestions.filter(q => q.groupId === groupId);
+            groupQuestionsCountModal.textContent = groupQuestions.length;
+            
+            groupQuestionsList.innerHTML = '';
+            if (groupQuestions.length === 0) {
+                groupQuestionsList.innerHTML = '<p class="empty-state">No questions in this group</p>';
+            } else {
+                groupQuestions.forEach(q => {
+                    const questionItem = document.createElement('div');
+                    questionItem.className = 'question-item';
+                    questionItem.innerHTML = `
+                        <h4>${q.question.substring(0, 40)}${q.question.length > 40 ? '...' : ''}</h4>
+                        <p>Category: ${q.category}</p>
+                    `;
+                    groupQuestionsList.appendChild(questionItem);
+                });
+            }
+            
+            // Set up save button
+            saveEditBtn.onclick = function() {
+                if (!editGroupName.value.trim()) {
+                    alert('Please enter a group name!');
+                    return;
+                }
+                
+                group.name = editGroupName.value.trim();
+                group.description = editGroupDescription.value.trim();
+                
+                // Update UI
+                updateGroupsList();
+                updateQuestionsList();
+                updateStudyGroupsList();
+                
+                // Update current group name if studying this group
+                if (currentStudyGroup && currentStudyGroup.id === groupId) {
+                    currentGroupName.textContent = group.name;
+                    currentSubject.textContent = `Group: ${group.name}`;
+                }
+                
+                editGroupModal.style.display = 'none';
+                alert('Group updated successfully!');
+            };
+            
+            // Show modal
+            editGroupModal.style.display = 'flex';
         }
         
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
             initializeStudyMode();
             initializeQuizMaker();
+            initializeGroupsTab();
             updateStudyStats();
             updateLevel();
+            updateStudyGroupsList();
         });
     </script>
 </body>
